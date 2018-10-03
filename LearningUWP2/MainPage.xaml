@@ -7,21 +7,36 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <local:StyleToBrushConverter x:Key="STBC"/>
+    </Page.Resources>
 
     <Grid>
         <Grid.Resources>
-            <DataTemplate x:Key="TruckDetailTemplate">
-                <StackPanel x:Name="TruckPanel">
-                    <TextBlock Text="{Binding Id}"/>
-                    <TextBlock Text="{Binding Name}"/>
-                    <TextBlock Text="{Binding Style}"/>
+            <DataTemplate x:Key="TruckDetailTemplate" x:DataType="local:TruckInfo">
+                <StackPanel x:Name="TruckPanel" Background="{x:Bind Style, Converter={StaticResource STBC}}">
+                    <TextBlock Text="{x:Bind Id}"/>
+                    <TextBlock Text="{x:Bind Name}"/>
+                    <TextBlock Text="{x:Bind Style}"/>
                 </StackPanel>
             </DataTemplate>
+
+            <local:StyleToBrushConverter x:Key="STBC"/>
         </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Text="Selected Truck:"/>
+            <TextBlock Text="{x:Bind Data.SelectedTruck.Name, Mode=OneWay}"/>
+            <Button Content="Add truck" Click="Button_Click"/>
+        </StackPanel>
         <!--<ContentControl ContentTemplate="{StaticResource TruckDetailTemplate}"/>-->
-        <!--<ItemsControl ItemsSource="{Binding}" ItemTemplate="{StaticResource TruckDetailTemplate}"/>-->
-        <!--<ItemsControl ItemsSource="{Binding Trucks}" ItemTemplate="{StaticResource TruckDetailTemplate}"/>-->
-        <ListBox SelectedItem="{Binding SelectedTruck, Mode=TwoWay}" ItemsSource="{Binding Trucks}" ItemTemplate="{StaticResource TruckDetailTemplate}" />
+        <!--<ItemsControl ItemsSource="{Binding}" ItemTemplate="{StaticResource TruckDetailTemplate}"/>
+        <ItemsControl ItemsSource="{Binding Trucks}" ItemTemplate="{StaticResource TruckDetailTemplate}"/>-->
+        <ListBox Grid.Row="1" HorizontalAlignment="Center" SelectedItem="{x:Bind Data.SelectedTruckObject, Mode=TwoWay}" ItemsSource="{x:Bind Data.Trucks}" ItemTemplate="{StaticResource TruckDetailTemplate}" />
+        
 
 
     </Grid>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -56,18 +57,86 @@ namespace LearningUWP2
 
             var data = new TruckData()
             {
-                Trucks = infos
+                Trucks = new ObservableCollection<TruckInfo>(infos)
             };
 
-            DataContext = data;
+            Data = data;
+        }
+
+        public TruckData Data { get; set; }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            (DataContext as TruckData).Trucks.Add(new TruckInfo()
+            {
+                Id = "4",
+                Name = "Motor Monster",
+                Style = "BRUM"
+            });
         }
     }
 
-    public class TruckData
+    public class StyleToBrushConverter: IValueConverter
     {
-        public IList<TruckInfo> Trucks { get; set; }
+        public StyleToBrushConverter()
+        {
 
-        public TruckInfo SelectedTruck { get; set; }
+        }
+
+        private SolidColorBrush _default = new SolidColorBrush(Windows.UI.Colors.White);
+        private SolidColorBrush _mexican = new SolidColorBrush(Windows.UI.Colors.LightPink);
+        private SolidColorBrush _desserts = new SolidColorBrush(Windows.UI.Colors.Chocolate);
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            switch(value as string)
+            {
+                case null:
+                default:
+                    return _default;
+                case "Mexican":
+                    return _mexican;
+                case "Desserts":
+                    return _desserts;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class TruckData : NotificationBase
+    {
+        public ObservableCollection<TruckInfo> Trucks { get; set; }
+
+        private TruckInfo _selectedTruck;
+
+        public TruckInfo SelectedTruck
+        {
+            get { return _selectedTruck; }
+            set
+            {
+                if(_selectedTruck == value)
+                {
+                    return;
+                }
+                _selectedTruck = value;
+                NotififyPropertyChanged();
+            }
+        }
+        public object SelectedTruckObject
+        {
+            get { return _selectedTruck; }
+            set
+            {
+                if (value == _selectedTruck)
+                    return;
+
+                _selectedTruck = (TruckInfo)value;
+                NotififyPropertyChanged("SelectedTruck");
+            }
+        }
     }
 
 
