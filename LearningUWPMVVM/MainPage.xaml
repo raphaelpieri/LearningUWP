@@ -12,6 +12,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Button Content="Refresh" FontSize="30" Command="{Binding RefreshCommand}"/>
         <ListBox Grid.Row="1" ItemsSource="{Binding Trucks}" SelectedItem="{Binding SelectedTruck, Mode=TwoWay}">
             <ListBox.ItemTemplate>
                 <DataTemplate>

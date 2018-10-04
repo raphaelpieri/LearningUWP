@@ -10,7 +10,10 @@ namespace ViewModelP
         public TrucksVM()
         {
             Trucks = new ObservableCollection<TruckVM>();
+            RefreshCommand = new Command(LoadAsync);
         }
+
+        public Command RefreshCommand { get; set; }
 
         private ObservableCollection<TruckVM> _trucks;
 
@@ -25,6 +28,7 @@ namespace ViewModelP
                 NotifyPropertyChanged();
             }
         }
+
 
         public async Task LoadAsync()
         {

@@ -14658,19 +14658,19 @@
     ".NETPlatform,Version=v5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\1fulgenc\\.nuget\\packages\\": {}
+    "C:\\Users\\rapha\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Users\\1fulgenc\\source\\repos\\LearningUWP2\\ViewModelP\\ViewModelP.csproj",
+      "projectUniqueName": "D:\\projetos\\cursos\\LearningUWP\\ViewModelP\\ViewModelP.csproj",
       "projectName": "ViewModelP",
-      "projectPath": "C:\\Users\\1fulgenc\\source\\repos\\LearningUWP2\\ViewModelP\\ViewModelP.csproj",
-      "projectJsonPath": "C:\\Users\\1fulgenc\\source\\repos\\LearningUWP2\\ViewModelP\\project.json",
-      "packagesPath": "C:\\Users\\1fulgenc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\1fulgenc\\source\\repos\\LearningUWP2\\ViewModelP\\obj\\",
+      "projectPath": "D:\\projetos\\cursos\\LearningUWP\\ViewModelP\\ViewModelP.csproj",
+      "projectJsonPath": "D:\\projetos\\cursos\\LearningUWP\\ViewModelP\\project.json",
+      "packagesPath": "C:\\Users\\rapha\\.nuget\\packages\\",
+      "outputPath": "D:\\projetos\\cursos\\LearningUWP\\ViewModelP\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
-        "C:\\Users\\1fulgenc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rapha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "sources": {
@@ -14680,8 +14680,8 @@
       "frameworks": {
         "dotnet5.0": {
           "projectReferences": {
-            "C:\\Users\\1fulgenc\\source\\repos\\LearningUWP2\\ModelsP\\ModelsP.csproj": {
-              "projectPath": "C:\\Users\\1fulgenc\\source\\repos\\LearningUWP2\\ModelsP\\ModelsP.csproj"
+            "D:\\projetos\\cursos\\LearningUWP\\ModelsP\\ModelsP.csproj": {
+              "projectPath": "D:\\projetos\\cursos\\LearningUWP\\ModelsP\\ModelsP.csproj"
             }
           }
         }
